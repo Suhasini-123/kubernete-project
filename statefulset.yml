@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Statefulset
+metadata:
+  name: mysql
+spec:
+  replicas: 2
+  serviceName: mysql
+  selector:
+    matchLabels:
+      app: mysql
+    template:
+      metadata:
+        labels: 
+        app: mysql
+      spec:
+        volumes:
+          - name: task-pv-storage
+            persistentVolumeClaim:
+              claimName: task-pv-claim
+        contai

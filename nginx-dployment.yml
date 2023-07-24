@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels: 
+     type: proxy
+     author: intelliqit
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+     type: proxy
+     author: intelliqit
+  template:
+    metadata:
+     name: nginx-pod
+     labels:
+        type: proxy
+        author: intelliqit
+    spec: 
+      containers:
+        - name: mynginx
+          image: nginx
+...
+
+    
+
